@@ -6,7 +6,7 @@
 # Google's Python Class
 # http://code.google.com/edu/languages/google-python-class/
 
-import sys
+# import sys
 import re
 import os
 import shutil
@@ -19,6 +19,8 @@ import subprocess
 
 # +++your code here+++
 # Write functions and modify main() to call them
+
+
 def get_special_paths(dir):
     special_paths = []
     files = os.listdir(dir)
@@ -27,11 +29,14 @@ def get_special_paths(dir):
             special_paths.append(file)
     return special_paths
 
+
 def copy_to(paths, dir):
     print('copy_to', paths, dir)
 
+
 def zip_to(paths, zippath):
     print('zip_to', paths, zippath)
+
 
 def main():
     # This snippet will help you get started with the argparse module.
@@ -58,11 +63,14 @@ def main():
             shutil.copy2(file, args.todir)
     if args.tozip:
         print("Command I'm going to do:")
-        print('zip -j ' + args.tozip + ' ' + ' '.join(get_special_paths(args.fromdir)))
-        subprocess.call(['zip', '-j', args.tozip] + get_special_paths(args.fromdir))
+        print('zip -j ' + args.tozip + ' ' +
+              ' '.join(get_special_paths(args.fromdir)))
+        subprocess.call(['zip', '-j', args.tozip] +
+                        get_special_paths(args.fromdir))
     if not args.todir and not args.tozip:
         for file in get_special_paths(args.fromdir):
             print(os.path.abspath(file))
-  
+
+
 if __name__ == "__main__":
     main()
